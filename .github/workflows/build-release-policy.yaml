@@ -44,8 +44,8 @@ jobs:
         username: ${{ steps.config.outputs.username }}
         password: ${{ secrets.REGISTRY_TOKEN }}
         server: ${{ steps.config.outputs.server }}
-
-    - name: Policy Build
+    - 
+      name: Policy Build
       id: policy-build
       uses: opcr-io/policy-build-action@v4
       with:
@@ -55,8 +55,8 @@ jobs:
         rego_version: "rego.v1"
       env:
         POLICY_DEFAULT_DOMAIN: ${{ steps.config.outputs.server }}
-
-    - name: Policy Tag
+    - 
+      name: Policy Tag
       id: policy-tag
       uses: opcr-io/policy-tag-action@v3
       with:
@@ -64,16 +64,16 @@ jobs:
         target_tags: ${{ steps.meta.outputs.tags }}
       env:
         POLICY_DEFAULT_DOMAIN: ${{ steps.config.outputs.server }}        
-
-    - name: Policy Push
+    - 
+      name: Policy Push
       id: policy-push
       uses: opcr-io/policy-push-action@v3
       with:
         tags: ${{ steps.meta.outputs.tags }}
       env:
         POLICY_DEFAULT_DOMAIN: ${{ steps.config.outputs.server }}
-
-    - name: Policy Logout
+    - 
+      name: Policy Logout
       id: policy-logout
       uses: opcr-io/policy-logout-action@v3
       with:
